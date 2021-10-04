@@ -1,16 +1,13 @@
 #!/bin/bash
 set -E
 
-source <(curl -s https://raw.githubusercontent.com/rangapv/bash-source/main/s1.sh) >/dev/null 2>&1
+source <(curl -s https://raw.githubusercontent.com/rangapv/bash-source/main/s1.sh) >>/dev/null 2>&1
 
 status() {
 
 usr1="$@"
 
-chk1=`which $usr1`
-chk1s="$?"
-
-if [[ -z $usr1  ]]
+if [[ -z $("$usr1")  ]]
 then
 	echo "$usr1 is not be installed/not-in-the-path hence aborting BALLERINA install"
         exit
@@ -28,14 +25,14 @@ chk2s="$?"
 if [[ (( $chk2s != 0 )) ]]
 then
 	echo "command $usr2 in not pre installed, installing NOW"
-	`sudo $cmd1 -y install $usr2`
+	`sudo $cm1 -y install $usr2`
 fi
 
 }
 
 pre() {
 
-status JAVA_HOME
+#status JAVA_HOME
 statusins unzip
 
 }
