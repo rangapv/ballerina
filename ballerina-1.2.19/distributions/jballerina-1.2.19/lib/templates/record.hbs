@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+{{> head }}
+
+<body class="cBallerina-io">
+    {{> bioBody }}
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            {{> logo }}
+            <div class="primary-list">
+                <h3>Records</h3>
+                <ul>
+                    {{#each module.records}}
+                        <li {{#equals record.name name}}class="active"{{/equals}}>
+                            <a href="{{name}}.html" onclick="menuLinkClick()">{{name}}</a>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            {{> currentModule }}
+            {{> allModules }}
+        </div>
+    </div>
+      <div class="content-wrapper pusher">
+        {{> mobMenu }}
+        <div class="main-wrapper">
+            <h1> 
+                {{> breadcrumb }}
+                <span class="title-type">Record - </span>
+                {{#if project.isSingleFile}}
+                    {{project.sourceFileName}}
+                {{else}}
+                    <a href="{{ rootPath }}{{module.id}}/index.html">{{module.id}}</a>
+                {{/if}}
+                 : <span class="records {{#if record.isDeprecated}}strike{{/if}}">{{ record.name }}</span>
+            </h1>
+            <p>
+                {{#if record.isDeprecated}}
+                    <span class="stab">Deprecated</span>
+                {{/if}}
+                {{{ record.description }}}
+            </p>
+            {{#if record.isClosed}}
+                <div class="ui horizontal label" data-tooltip="A record with a fixed set of fields" data-position="top left">Closed record</div>
+            {{/if}}
+            <div class="constants">
+                {{#unless record.fields}}
+                    <p>This record doesn't contain any fields.</p>
+                {{/unless}}
+                {{#if record.fields}}
+                    {{#record}}
+                        <h2>Fields</h2>
+                            {{> fields }}
+                    {{/record}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</body>
+
+{{> footer }}

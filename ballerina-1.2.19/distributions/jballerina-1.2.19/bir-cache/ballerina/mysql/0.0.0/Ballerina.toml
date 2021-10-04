@@ -1,0 +1,20 @@
+[project]
+org-name = "ballerina"
+version = "0.0.0"
+
+[platform]
+target = "java8"
+
+    [[platform.libraries]]
+    artifactId = "mysql"
+    version = "1.2.19"
+    path = "./lib/ballerina-mysql-1.2.19.jar"
+    groupId = "ballerina"
+    modules = ["mysql"]
+
+    [[platform.libraries]]
+    artifactId = "mysql"
+    version = "1.2.19"
+    path = "./lib/ballerina-sql-1.2.19.jar"
+    groupId = "ballerina"
+    modules = ["mysql"]

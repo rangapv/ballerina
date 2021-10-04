@@ -1,0 +1,20 @@
+[project]
+org-name = "ballerina"
+version = "1.0.0"
+
+[platform]
+target = "java8"
+
+    [[platform.libraries]]
+    artifactId = "crypto"
+    version = "1.2.19"
+    path = "./lib/ballerina-crypto-1.2.19.jar"
+    groupId = "ballerina"
+    modules = ["crypto"]
+
+    [[platform.libraries]]
+    artifactId = "commons-codec"
+    version = "1.9"
+    path = "./lib/commons-codec-1.9.jar"
+    groupId = "commons-codec"
+    modules = ["crypto"]

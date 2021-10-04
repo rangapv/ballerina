@@ -1,0 +1,13 @@
+[project]
+org-name = "ballerina"
+version = "2.0.0"
+
+[platform]
+target = "java8"
+
+    [[platform.libraries]]
+    artifactId = "cache"
+    version = "1.2.19"
+    path = "./lib/ballerina-cache-1.2.19.jar"
+    groupId = "ballerina"
+    modules = ["cache"]
