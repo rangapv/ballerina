@@ -6,8 +6,10 @@ source <(curl -s https://raw.githubusercontent.com/rangapv/bash-source/main/s1.s
 status() {
 
 usr1="$@"
+usr1w=`echo $("$usr1") >>/dev/null 2>&1`
+usr1ws="$?"
 
-if [[ -z $("$usr1")  ]]
+if [[ ( $usr1ws != 0 )  ]]
 then
 	echo "$usr1 is not be installed/not-in-the-path hence aborting BALLERINA install"
         exit
@@ -32,7 +34,7 @@ fi
 
 pre() {
 
-#status JAVA_HOME
+status JAVA_HOME
 statusins unzip
 
 }
@@ -62,13 +64,11 @@ ballins() {
         unz=`which unzip`
         s23="`sudo "$unz" ./"$balzip" -d "$ball1"`"
         balclean="${balzip::-4}"
-        echo "balclaen is $balclean"
        	BALLERINA_HOME="$ball1/$balclean/bin"
 	#/usr/local/ballerina/ballerina-1.2.19/bin
-	echo "PATH=$PATH:$BALLERINA_HOME" | sudo tee -a /etc/profile
+	`echo "PATH=$PATH:$BALLERINA_HOME" | sudo tee -a /etc/profile >>/dev/null 2>&1`
 
 }
-
 
 pre
 ball
